@@ -178,4 +178,61 @@ func getOldestAge() {
 }
 
 // force unwrap
-let oldestAge = ages.last! // <-- don't use force unwrap. if there is nothing in there, it will crash
+// let oldestAge = ages.last! // <-- don't use force unwrap. if there is nothing in there, it will crash
+
+
+// Class---------------
+class Developer {
+    var name: String
+    var jobTitle: String
+    var yearsExp: Int
+    
+    init(name: String, jobTitle: String, yearsExp: Int) {
+        self.name = name
+        self.jobTitle = jobTitle
+        self.yearsExp = yearsExp
+    }
+    
+    func speakName() {
+        print(name)
+    }
+}
+
+
+// Inheritance
+class iOSDeveloper: Developer {
+    var favoriteFramework: String?
+    
+    func speakFavoriteFramework() {
+        if let favoriteFramework = favoriteFramework {
+            print(favoriteFramework)
+        } else {
+            print("I don't have a favorite framework")
+        }
+    }
+    
+    override func speakName() {
+        print("\(name) - \(jobTitle)")
+    }
+}
+
+var joe = iOSDeveloper(name: "Joe", jobTitle: "iOS Developer", yearsExp: 1)
+
+
+// Structs
+// reference type vs value type
+// ref - points to a specific set of data <-- think of it being a google sheet that you shared, if someone changes something in it, it changes for you too.
+// value type - copies the data for its own <-- think of it being like an excel spreadsheet, if you share it, and someone changes it, it becomes their own, doesn't change yours
+
+// Structs look like classes, DO NOT need initializers, and DOES NOT change value of current struct if you make a copy of a current struct
+
+
+// Extensions
+extension String {
+    func removeWhiteSpace() -> String {
+        return components(separatedBy: .whitespaces).joined()
+    }
+}
+
+let alphabet = "a b c d e f"
+print(alphabet.removeWhiteSpace())
